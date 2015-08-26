@@ -16,6 +16,7 @@ public class loanDao implements genericDao<Loan> {
 	private final String SQL_GET_ALL = "select idLoan, c.nameComic, p.namePerson, l.date from  loans l join comics c on l.Comics_idComic = c.idComic join persons p on l.Persons_idPerson = p.idPerson ";
 	private final String SQL_DELETE = "DELETE FROM loans WHERE idLoan = ?";
 	private final String SQL_GET = "SELECT * FROM loans l  join comics c on l.Comics_idComic = c.idComic join persons p on l.Persons_idPerson = p.idPerson WHERE  idLoan = ?";
+	private final String SQL_UPDATE = "UPDATE loans SET Persons_idPerson =?, Comics_idComic=? WHERE idLoan = ?";
 	
 	private final connectionDB conn = connectionDB.getConnection();
 	
@@ -41,8 +42,27 @@ public class loanDao implements genericDao<Loan> {
 	}
 
 	public boolean update(Loan c) {
-		// TODO Auto-generated method stub
+		
+		try {
+			PreparedStatement ps;
+			ps = conn.getConn().prepareStatement(SQL_UPDATE);
+			ps.setInt(1, c.getPerson().getIdPerson());
+			ps.setInt(2, c.getComic().getIdComic());
+			ps.setInt(3,  c.getIdLoan());
+			
+
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conn.closeConnection();
+		}
 		return false;
+		
+		
 	}
 
 	public boolean delete(Object key) {

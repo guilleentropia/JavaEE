@@ -7,20 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.comics.app.Controller.comicController;
-import com.comics.app.Model.Comic;
+
+import com.comics.app.Controller.loanController;
+
+import com.comics.app.Model.Loan;
 
 /**
- * Servlet implementation class AddComic
+ * Servlet implementation class DeleteLoan
  */
-@WebServlet("/AddComic")
-public class AddComic extends HttpServlet {
+@WebServlet("/DeleteLoan")
+public class DeleteLoan extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddComic() {
+    public DeleteLoan() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,27 +32,29 @@ public class AddComic extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int id = Integer.parseInt(request.getParameter("Id"));
+		loanController cont = new loanController();
+		Loan l = cont.get(id);
+		
+		request.setAttribute("loan",l);
+		
+		
+		getServletContext().getRequestDispatcher("/DeleteComic.jsp").
+		forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		loanController cont = new loanController();
+		int borrar = Integer.parseInt(request.getParameter("Id"));
 		
-		comicController cont = new comicController();
-		Comic c = new Comic();
-	//	int Ide = Integer.parseInt(request.getParameter("Id"));
-	//	c.setIdComic(Ide);
-		c.setNameComic(request.getParameter("Name"));
-		c.setCompanyComic(request.getParameter("CompanyName"));
-		int Quantity = Integer.parseInt(request.getParameter("Quantity"));
-		c.setQuantityComic(Quantity);
-		c.setReviewComic(request.getParameter("Review"));
-		cont.add(c);
+		cont.delete(borrar);
 		
-		response.sendRedirect("index.jsp");
-		
-		
+		getServletContext().getRequestDispatcher("/index.jsp").
+		forward(request, response);
 	}
 
 }

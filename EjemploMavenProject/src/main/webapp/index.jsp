@@ -10,7 +10,7 @@
 <body class="body">
 <h2>COMIC STORE</h2>
 <img src="http://howtolovecomics.com/wp-content/uploads/2013/09/shop_photo1.jpg?aac610"
-width=300px height=300px>
+width=250px height=250px>
 			
 			<ul>
 				<li><img src="https://cdn4.iconfinder.com/data/icons/ios7-active-basic/512/todo_list_text_document-128.png"
@@ -29,6 +29,17 @@ width=300px height=300px>
 				<li><img src="http://c.dryicons.com/images/icon_sets/luna_blue_icons/png/128x128/add.png"
 				width=32px height=32px>
 				<a href="/EjemploMavenProject/AddPerson.jsp" class="lista">Agregar Persona</a></li>
+				
+			</ul>
+			
+			<ul>
+				<li><img src="https://cdn4.iconfinder.com/data/icons/ios7-active-basic/512/todo_list_text_document-128.png"
+				width=32px height=32px>
+				<a href="ListLoan" class="lista">Mostrar todos los Prestamos</a>
+				</li>
+				<li><img src="http://c.dryicons.com/images/icon_sets/luna_blue_icons/png/128x128/add.png"
+				width=32px height=32px>
+				<a href="/EjemploMavenProject/AddLoan.jsp" class="lista">Agregar Prestamo</a></li>
 				
 			</ul>
 			

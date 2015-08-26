@@ -39,15 +39,23 @@ public class AddPerson extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		personController cont = new personController();
-		Person p = new Person();
-		int Ide = Integer.parseInt(request.getParameter("Id"));
-		p.setIdPerson(Ide);
-		p.setNamePerson(request.getParameter("Name"));
-		p.setTelephonePerson(request.getParameter("Telephone"));
-		cont.add(p);
 		
-		response.sendRedirect("index.jsp");
+		try
+		{
+			personController cont = new personController();
+			Person p = new Person();
+			p.setNamePerson(request.getParameter("Name"));
+			p.setTelephonePerson(request.getParameter("Telephone"));
+			cont.add(p);
+			
+			response.sendRedirect("index.jsp");
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 		
 	}
 

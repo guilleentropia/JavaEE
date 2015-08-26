@@ -15,8 +15,8 @@
 		<fieldset>
 			<br>
 			<div style="color:black">
-				<label for="idComic">Id</label> <input type="text" name="Id"
-					id="Id"  value="${comic.idComic}" disabled /><br><br>
+				 <input type="hidden" name="Id"
+					id="Id"  value="${comic.idComic}"  /><br><br>
 			</div>
 
 			<div style="color:black">

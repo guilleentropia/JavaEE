@@ -37,19 +37,25 @@ public class AddComic extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		comicController cont = new comicController();
-		Comic c = new Comic();
-	//	int Ide = Integer.parseInt(request.getParameter("Id"));
-	//	c.setIdComic(Ide);
-		c.setNameComic(request.getParameter("Name"));
-		c.setCompanyComic(request.getParameter("CompanyName"));
-		int Quantity = Integer.parseInt(request.getParameter("Quantity"));
-		c.setQuantityComic(Quantity);
-		c.setReviewComic(request.getParameter("Review"));
-		cont.add(c);
+		try{
+			comicController cont = new comicController();
 		
-		response.sendRedirect("index.jsp");
+			Comic c = new Comic();
+		//	int Ide = Integer.parseInt(request.getParameter("Id"));
+		//	c.setIdComic(Ide);
+			c.setNameComic(request.getParameter("Name"));
+			c.setCompanyComic(request.getParameter("CompanyName"));
+			int Quantity = Integer.parseInt(request.getParameter("Quantity"));
+			c.setQuantityComic(Quantity);
+			c.setReviewComic(request.getParameter("Review"));
+			cont.add(c);
+			response.sendRedirect("index.jsp");
+		}
 		
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		
 	}
 

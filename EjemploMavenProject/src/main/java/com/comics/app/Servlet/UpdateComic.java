@@ -33,16 +33,23 @@ public class UpdateComic extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		int id = Integer.parseInt(request.getParameter("Id"));
+		try
+		{
+			int id = Integer.parseInt(request.getParameter("Id"));
+			comicController cont = new comicController();
+			Comic c = cont.get(id);
+			
+			request.setAttribute("comic",c);
+			
+			// va hacia el formulario
+			getServletContext().getRequestDispatcher("/UpdateComic.jsp").
+			forward(request, response);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		
-		comicController cont = new comicController();
-		Comic c = cont.get(id);
-		
-		request.setAttribute("comic",c);
-		
-		// va hacia el formulario
-		getServletContext().getRequestDispatcher("/UpdateComic.jsp").
-		forward(request, response);
 		
 		
 	}
@@ -53,19 +60,27 @@ public class UpdateComic extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 						
 		
-		comicController cont = new comicController();
-		Comic c = new Comic();
-		int Ide = Integer.parseInt(request.getParameter("Id"));
-		c.setIdComic(Ide);
-		c.setNameComic(request.getParameter("Name"));
-		c.setCompanyComic(request.getParameter("Company"));
-		int Quantity = Integer.parseInt(request.getParameter("Quantity"));
-		c.setQuantityComic(Quantity);
-		c.setReviewComic(request.getParameter("Review"));
-		cont.update(c);
+		try
+		{
+			comicController cont = new comicController();
+			Comic c = new Comic();
+			int Ide = Integer.parseInt(request.getParameter("Id"));
+			c.setIdComic(Ide);
+			c.setNameComic(request.getParameter("Name"));
+			c.setCompanyComic(request.getParameter("Company"));
+			int Quantity = Integer.parseInt(request.getParameter("Quantity"));
+			c.setQuantityComic(Quantity);
+			c.setReviewComic(request.getParameter("Review"));
+			cont.update(c);
+			
+			getServletContext().getRequestDispatcher("/index.jsp").
+			forward(request, response);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		
-		getServletContext().getRequestDispatcher("/index.jsp").
-		forward(request, response);
 	}
 
 }

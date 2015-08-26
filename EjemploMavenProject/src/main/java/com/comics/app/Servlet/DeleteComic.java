@@ -32,15 +32,23 @@ public class DeleteComic extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int id = Integer.parseInt(request.getParameter("Id"));
-		comicController cont = new comicController();
-		Comic c = cont.get(id);
+		try
+		{
+			int id = Integer.parseInt(request.getParameter("Id"));
 		
-		request.setAttribute("comic",c);
+			comicController cont = new comicController();
+			Comic c = cont.get(id);
+		
+			request.setAttribute("comic",c);
 		
 		
-		getServletContext().getRequestDispatcher("/DeleteComic.jsp").
-		forward(request, response);
+			getServletContext().getRequestDispatcher("/DeleteComic.jsp").
+			forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -48,7 +56,8 @@ public class DeleteComic extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		try
+		{
 		comicController cont = new comicController();
 		int borrar = Integer.parseInt(request.getParameter("Id"));
 		
@@ -56,6 +65,11 @@ public class DeleteComic extends HttpServlet {
 		
 		getServletContext().getRequestDispatcher("/index.jsp").
 		forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -32,15 +32,23 @@ public class DeletePerson extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int id = Integer.parseInt(request.getParameter("Id"));
-		personController cont = new personController();
-		Person p = cont.get(id);
+		try
+		{	
+			int id = Integer.parseInt(request.getParameter("Id"));
+			personController cont = new personController();
+			Person p = cont.get(id);
+			
+			request.setAttribute("person",p);
+			
+			
+			getServletContext().getRequestDispatcher("/DeletePerson.jsp").
+			forward(request, response);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		
-		request.setAttribute("person",p);
-		
-		
-		getServletContext().getRequestDispatcher("/DeletePerson.jsp").
-		forward(request, response);
 	}
 
 	/**
@@ -48,13 +56,21 @@ public class DeletePerson extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		personController cont = new personController();
-		int borrar = Integer.parseInt(request.getParameter("Id"));
+		try
+		{
+			personController cont = new personController();
+			int borrar = Integer.parseInt(request.getParameter("Id"));
+			
+			cont.delete(borrar);
+			
+			getServletContext().getRequestDispatcher("/index.jsp").
+			forward(request, response);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		
-		cont.delete(borrar);
-		
-		getServletContext().getRequestDispatcher("/index.jsp").
-		forward(request, response);
 	}
 
 }

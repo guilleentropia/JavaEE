@@ -13,11 +13,10 @@
 		<fieldset>
 		<p >Modificar Persona</p>
 <div class="contiene">			
-			<div style="color:black">
-				<input type="hidden" name="Id"
-					id="Id" value="${person.idPerson}"  disabled/><br><br>
+			<div>
+				 <input type="hidden" name="Id"
+					id="Id" value="${person.idPerson}"  /><br><br>
 			</div>
-
 			
 			<div style="color:black">
 				<label for="namePerson">Nombre</label> <input name="Name" id="Name" 

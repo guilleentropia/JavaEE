@@ -38,19 +38,26 @@ public class AddLoan extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		comicController cont = new comicController();
-		List<Comic> lista = new ArrayList<Comic>();
-		lista = cont.getAll();
-		request.setAttribute("lista", lista);
+		try{
+			comicController cont = new comicController();
+		
+			List<Comic> lista = new ArrayList<Comic>();
+			lista = cont.getAll();
+			request.setAttribute("lista", lista);
 		
 		
-		personController pers = new personController();
-		List<Person> listaper = new ArrayList<Person>();
-		listaper = pers.getAll();
-		request.setAttribute("listaper", listaper);
+			personController pers = new personController();
+			List<Person> listaper = new ArrayList<Person>();
+			listaper = pers.getAll();
+			request.setAttribute("listaper", listaper);
 		
-		 RequestDispatcher rd = request.getRequestDispatcher("AddLoan.jsp");  
-	     rd.forward(request, response);  
+			RequestDispatcher rd = request.getRequestDispatcher("AddLoan.jsp");  
+			rd.forward(request, response);  
+		  }
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**

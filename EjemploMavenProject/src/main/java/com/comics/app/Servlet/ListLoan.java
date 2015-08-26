@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.comics.app.Controller.loanController;
-import com.comics.app.Controller.personController;
+
 import com.comics.app.Model.Loan;
-import com.comics.app.Model.Person;
+
 
 /**
  * Servlet implementation class ListLoan
@@ -36,13 +36,20 @@ public class ListLoan extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		loanController cont = new loanController();
-		List<Loan> lista = new ArrayList<Loan>();
-		lista = cont.getAll();
-		request.setAttribute("lista", lista);
-	
-		 RequestDispatcher rd = request.getRequestDispatcher("ListLoan.jsp");  
-	     rd.forward(request, response);  
+		try
+		{
+			loanController cont = new loanController();
+			List<Loan> lista = new ArrayList<Loan>();
+			lista = cont.getAll();
+			request.setAttribute("lista", lista);
+		
+			 RequestDispatcher rd = request.getRequestDispatcher("ListLoan.jsp");  
+		     rd.forward(request, response); 
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		
 	}
 

@@ -12,6 +12,7 @@ import com.comics.app.Controller.loanController;
 
 import com.comics.app.Model.Loan;
 
+
 /**
  * Servlet implementation class DeleteLoan
  */
@@ -32,15 +33,23 @@ public class DeleteLoan extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int id = Integer.parseInt(request.getParameter("Id"));
-		loanController cont = new loanController();
-		Loan l = cont.get(id);
+		try{
+			int id = Integer.parseInt(request.getParameter("Id"));
 		
-		request.setAttribute("loan",l);
-		
-		
-		getServletContext().getRequestDispatcher("/DeleteComic.jsp").
-		forward(request, response);
+			loanController cont = new loanController();
+			Loan l = cont.get(id);
+				
+			request.setAttribute("loan",l);
+			request.setAttribute("person",l.getPerson());
+			request.setAttribute("comic", l.getComic());
+				
+			getServletContext().getRequestDispatcher("/DeleteLoan.jsp").
+			forward(request, response);
+		}
+		catch(Exception ex) 
+		{
+		  ex.printStackTrace();
+		}
 	}
 
 	/**
@@ -48,13 +57,21 @@ public class DeleteLoan extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		loanController cont = new loanController();
-		int borrar = Integer.parseInt(request.getParameter("Id"));
+		try
+		{
+			loanController cont = new loanController();
+			int borrar = Integer.parseInt(request.getParameter("Id"));
+			
+			cont.delete(borrar);
+			
+			getServletContext().getRequestDispatcher("/index.jsp").
+			forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		
-		cont.delete(borrar);
-		
-		getServletContext().getRequestDispatcher("/index.jsp").
-		forward(request, response);
 	}
 
 }

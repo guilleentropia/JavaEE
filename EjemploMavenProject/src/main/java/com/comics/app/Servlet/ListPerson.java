@@ -36,16 +36,22 @@ public class ListPerson extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try
+		{
+			personController cont = new personController();
+			List<Person> lista = new ArrayList<Person>();
+			lista = cont.getAll();
+			request.setAttribute("lista", lista);
 		
-		personController cont = new personController();
-		List<Person> lista = new ArrayList<Person>();
-		lista = cont.getAll();
-		request.setAttribute("lista", lista);
-	
-		 RequestDispatcher rd = request.getRequestDispatcher("ListPerson.jsp");  
-	     rd.forward(request, response);  
-		
-		
+			 RequestDispatcher rd = request.getRequestDispatcher("ListPerson.jsp");  
+		     rd.forward(request, response); 
+			
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+				
 		
 	}
 
@@ -54,7 +60,7 @@ public class ListPerson extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doGet(request, response);
+		
 	}
 
 }

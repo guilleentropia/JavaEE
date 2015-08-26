@@ -31,16 +31,24 @@ public class UpdatePerson extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("Id"));
+		try
+		{
+			int id = Integer.parseInt(request.getParameter("Id"));
+			personController cont = new personController();
+			Person p = cont.get(id);
+			
+			request.setAttribute("person",p);
+			
+			// va hacia el formulario
+			getServletContext().getRequestDispatcher("/UpdatePerson.jsp").
+			forward(request, response);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		
-		personController cont = new personController();
-		Person p = cont.get(id);
 		
-		request.setAttribute("person",p);
-		
-		// va hacia el formulario
-		getServletContext().getRequestDispatcher("/UpdatePerson.jsp").
-		forward(request, response);
 	}
 
 	/**
@@ -48,16 +56,23 @@ public class UpdatePerson extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		personController cont = new personController();
-		Person p = new Person();
-		int Ide = Integer.parseInt(request.getParameter("Id"));
-		p.setIdPerson(Ide);
-		p.setNamePerson(request.getParameter("Name"));
-		p.setTelephonePerson(request.getParameter("Telephone"));
-		cont.update(p);
+		try{
+			personController cont = new personController();
+			Person p = new Person();
+			int Ide = Integer.parseInt(request.getParameter("Id"));
+			p.setIdPerson(Ide);
+			p.setNamePerson(request.getParameter("Name"));
+			p.setTelephonePerson(request.getParameter("Telephone"));
+			cont.update(p);
+			
+			getServletContext().getRequestDispatcher("/index.jsp").
+			forward(request, response);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 		
-		getServletContext().getRequestDispatcher("/index.jsp").
-		forward(request, response);
 	}
 
 }

@@ -39,7 +39,7 @@ width=250px height=250px>
 				</li>
 				<li><img src="http://c.dryicons.com/images/icon_sets/luna_blue_icons/png/128x128/add.png"
 				width=32px height=32px>
-				<a href="/EjemploMavenProject/AddLoan.jsp" class="lista">Agregar Prestamo</a></li>
+				<a href="/EjemploMavenProject/AddLoan" class="lista">Agregar Prestamo</a></li>
 				
 			</ul>
 			

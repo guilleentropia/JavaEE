@@ -36,14 +36,23 @@ public class ListComic extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		try
+		{
+			comicController cont = new comicController();
+			List<Comic> lista = new ArrayList<Comic>();
+			lista = cont.getAll();
+			request.setAttribute("lista", lista);
 		
-		comicController cont = new comicController();
-		List<Comic> lista = new ArrayList<Comic>();
-		lista = cont.getAll();
-		request.setAttribute("lista", lista);
+			 RequestDispatcher rd = request.getRequestDispatcher("ListComic.jsp");  
+		     rd.forward(request, response);  
+		
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 	
-		 RequestDispatcher rd = request.getRequestDispatcher("ListComic.jsp");  
-	     rd.forward(request, response);  
+	
 	}
 	
 
@@ -51,8 +60,7 @@ public class ListComic extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

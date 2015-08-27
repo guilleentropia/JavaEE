@@ -7,14 +7,16 @@ import java.sql.*;
 
 
 import com.comics.app.Model.Login;
+import com.comics.app.Model.Rol;
 
 public class loginDao implements genericDao<Login> {
 	
-	private final String SQL_INSERT = "INSERT INTO login (user, password) VALUES (?, ?)";
+	private final String SQL_INSERT = "INSERT INTO login (user, password, idRol) VALUES (?, ?, ?)";
 	private final String SQL_DELETE = "DELETE FROM login WHERE idLogin = ?";
-	private final String SQL_UPDATE = "UPDATE login SET user = ?, password = ? WHERE idLogin = ? ";
+	private final String SQL_UPDATE = "UPDATE login SET user = ?, password = ?, idRol =? WHERE idLogin = ? ";
 	private final String SQL_GET = "SELECT * FROM login WHERE ( idLogin = ?)";
 	private final String SQL_GET_ALL = "SELECT * FROM login";
+	private final String SQL_LOG = "SELECT * FROM login WHERE user = ? and password=?";
 	
 	private final connectionDB conn = connectionDB.getConnection();
 
@@ -25,8 +27,10 @@ public class loginDao implements genericDao<Login> {
 			PreparedStatement ps;
 			ps = conn.getConn().prepareStatement(SQL_INSERT);
 			
-			ps.setString(1, c.getUsuario());
-			ps.setString(2, c.getPassword());
+			ps.setInt(1, c.getNombreRol().getIdRol());
+			ps.setString(2, c.getUsuario());
+			ps.setString(3, c.getPassword());
+			
 						
 			if(ps.executeUpdate() > 0) {
 				return true;
@@ -48,7 +52,8 @@ public class loginDao implements genericDao<Login> {
 			ps = conn.getConn().prepareStatement(SQL_UPDATE);
 			ps.setString(1, c.getUsuario());
 			ps.setString(2, c.getPassword());
-			ps.setInt(3, c.getIdLogin());
+			ps.setInt(3,  c.getNombreRol().getIdRol());
+			ps.setInt(4, c.getIdLogin());
 			
 			
 			if(ps.executeUpdate() > 0) {
@@ -85,6 +90,7 @@ public class loginDao implements genericDao<Login> {
 	@Override
 	public Login get(Object key) {
 		Login l  = new Login();
+		Rol r = new Rol();
 		
 		try {
 			
@@ -99,7 +105,10 @@ public class loginDao implements genericDao<Login> {
 				l.setIdLogin(res.getInt("idLogin"));
 				l.setUsuario(res.getString("user"));
 				l.setPassword(res.getString("password"));
+				r.setIdRol(res.getInt("idRol"));
+				r.setDescripcion(res.getString("descripcion"));
 							  }
+			
 					
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -108,6 +117,34 @@ public class loginDao implements genericDao<Login> {
 		}
 		return l;
 	}
+	
+	public boolean ingreso(String usuario, String password)
+	{
+		boolean resultado= false;
+		
+try {
+			
+			PreparedStatement ps;
+			ResultSet res;
+			
+			ps = conn.getConn().prepareStatement(SQL_LOG);
+			ps.setString(1, usuario);
+			ps.setString(2, password);
+			
+			res = ps.executeQuery();
+			resultado=res.next();
+			
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conn.closeConnection();
+		}
+		
+		return resultado;
+	}
+	
+	
 
 	@Override
 	public List<Login> getAll() {
@@ -120,12 +157,16 @@ public class loginDao implements genericDao<Login> {
 			ps = conn.getConn().prepareStatement(SQL_GET_ALL);
 			res = ps.executeQuery();
 			
+			Rol r = new Rol();
+			
 			while(res.next()) {
 				
 				Login l = new Login();
 				l.setIdLogin(res.getInt("idLogin"));
 				l.setUsuario(res.getString("user"));
 				l.setPassword(res.getString("password"));
+				r.setIdRol(res.getInt("idRol"));
+				r.setDescripcion(res.getString("descripcion"));
 				
 				
 				list.add(l);

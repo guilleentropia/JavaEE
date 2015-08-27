@@ -12,25 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import com.comics.app.Controller.loginController;
-
 import com.comics.app.Controller.rolController;
-
-import com.comics.app.Model.Login;
 
 import com.comics.app.Model.Rol;
 
 /**
- * Servlet implementation class AddLogin
+ * Servlet implementation class ListRol
  */
-@WebServlet("/AddLogin")
-public class AddLogin extends HttpServlet {
+@WebServlet("/ListRol")
+public class ListRol extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddLogin() {
+    public ListRol() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,21 +35,21 @@ public class AddLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try{
+
+		try
+		{
 			rolController cont = new rolController();
-		
 			List<Rol> lista = new ArrayList<Rol>();
 			lista = cont.getAll();
 			request.setAttribute("lista", lista);
 		
-							
-			RequestDispatcher rd = request.getRequestDispatcher("AddLogin.jsp");  
-			rd.forward(request, response);  
-		  }
-		catch (Exception e) 
+			 RequestDispatcher rd = request.getRequestDispatcher("ListRol.jsp");  
+		     rd.forward(request, response);  
+		
+		}
+		catch(Exception ex)
 		{
-			e.printStackTrace();
+			ex.printStackTrace();
 		}
 	}
 
@@ -61,24 +57,8 @@ public class AddLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try{
-			loginController cont = new loginController();
-		
-			Login l = new Login();
-			Rol r = new Rol();
-		
-			l.setUsuario(request.getParameter("user"));
-			l.setPassword(request.getParameter("password"));
-			r.setDescripcion(request.getParameter("rol"));
-			
-			cont.add(r,l.getUsuario(), l.getPassword());
-			response.sendRedirect("index.jsp");
-		}
-		
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

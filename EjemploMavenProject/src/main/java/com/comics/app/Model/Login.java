@@ -4,9 +4,16 @@ public class Login {
 	private int idLogin;
 	private String usuario;
 	private String password;
+	private Rol nombreRol;
 	
 	
 	
+	public Rol getNombreRol() {
+		return nombreRol;
+	}
+	public void setNombreRol(Rol nombreRol) {
+		this.nombreRol = nombreRol;
+	}
 	public String getUsuario() {
 		return usuario;
 	}
@@ -34,10 +41,11 @@ public class Login {
 	
 	
 	
-	public Login(String usuario, String password) {
+	public Login(String usuario, String password,Rol nombreRol) {
 		super();
 		this.usuario = usuario;
 		this.password = password;
+		this.nombreRol = nombreRol;
 	}
 
 	

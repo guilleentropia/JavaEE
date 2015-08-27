@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="${encoding}">
+<link rel="stylesheet" type="text/css" href="Css/Style.css" /> 
 <title>Modificar Usuario</title>
 </head>
 <body>

@@ -9,10 +9,23 @@
 </head>
 <body class="body">
 <h2>COMIC STORE</h2>
-
+<p>	el atributo dice<%	String nombre_variable = (String)session.getAttribute("nombre_param"); %></p>
 	<header>	
 		<nav>	
 		   <ul>
+			    <li>Usuarios		
+					<div>
+						<ul>
+							<li><a href="ListLogin" class="lista">Mostrar todos los Usuarios</a></li>
+							<li><a href="/EjemploMavenProject/AddLogin" class="lista">Agregar Usuario</a></li>
+						</ul>
+					</div>	
+				</li>	
+				
+			
+			
+			
+			
 			
 				<li>Comics			
 					<div>
@@ -34,7 +47,9 @@
 					</div>	
 				</li>	
 				
-			
+
+   	
+	
 			
 			
 				<li>Prestamos		

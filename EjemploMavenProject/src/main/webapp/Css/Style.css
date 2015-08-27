@@ -114,10 +114,7 @@ form div label {
 	text-align: right;
 }
 
-ul
-{
-    list-style-type: none;
-}
+
 
 input[type=submit]
 {
@@ -159,7 +156,7 @@ header{
 }
 
 nav{
-	background: #F9690E;
+	background: #E67E22;
 	margin-top: 20px;
 	position: relative;
 	
@@ -174,15 +171,12 @@ nav ul{
 
 nav > ul > li {
 	float: left;
-	padding: 10px 20px;
+	padding: 10px 0 0 20px;
 	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
-	font-size: 30px;
+	font-size: 20px;
 	font-style: bold;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.3999996185303px;
 	color: white;
-	width: 275px;
+	width: 150px;
 	border: 1px solid #EB9532;
 }
 
@@ -190,7 +184,7 @@ nav ul li a {
 	text-decoration: none;
 	color: #fff;
 	display: block;
-	padding: 10px 20px;
+	
 }
 
 nav ul li a:hover{
@@ -204,19 +198,17 @@ nav > ul > li:hover div{
 
 /* Submenu */
 nav ul li div{
-	width: 500px;
+	width: 320px;
 	position: absolute;
-	left: 100;
-	background: #ccc;
+	background: #ffffff;
 	box-sizing:border-box;
 	display: none;
 }
 
 
 nav ul li div ul{
-	width: 20%;
 	display: table-cell;
-	border-right:1px solid rgba(255,255,255,.5);
+	
 	box-sizing:border-box;
 }
 

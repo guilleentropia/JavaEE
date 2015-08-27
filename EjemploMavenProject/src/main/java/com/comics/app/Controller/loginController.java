@@ -12,7 +12,7 @@ public class loginController {
 
 	loginDao logindao = new loginDao();
 	
-	public boolean add(Rol r, String usuario, String Contraseña) {
+	public boolean add(String usuario, String Contraseña,Rol r) {
 		Login l = new Login();
 		l.setNombreRol(r);
 		l.setUsuario(usuario);

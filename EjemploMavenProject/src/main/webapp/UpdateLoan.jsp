@@ -48,7 +48,7 @@
 		
 		
 		<label style="color:black">Fecha :</label>
-		<input type ="text" name="fecha" value="${loan.date}" required
+		<input type ="date" name="fecha" value="${loan.date}" required
 		oninvalid="setCustomValidity('El campo fecha es requerido')" 
         oninput="setCustomValidity('')"></input><label style="color:orange; width:350px">La fecha debe tener formato dd-mm-yyyy</label>
 		

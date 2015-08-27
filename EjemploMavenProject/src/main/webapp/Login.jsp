@@ -12,6 +12,7 @@
 <p >Ingresar</p>
 <div class="contiene">
 	<br>
+	<p style="color:red; font-style:bold; font-size:16px">   ${message}</p>
 	<div style="color:black">
 		<label>Usuario</label>
 		<input type="text" name="user" required 
@@ -24,6 +25,7 @@
 		oninvalid="setCustomValidity('Debe ingresar una contraseña')" 
         oninput="setCustomValidity('')"><br><br>
 	</div>
+	
 	
 </div>
 <input type="submit" value="Guardar">

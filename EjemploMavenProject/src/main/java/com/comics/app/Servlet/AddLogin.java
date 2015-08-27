@@ -69,9 +69,13 @@ public class AddLogin extends HttpServlet {
 		
 			l.setUsuario(request.getParameter("user"));
 			l.setPassword(request.getParameter("password"));
-			r.setDescripcion(request.getParameter("rol"));
+			int Iderol = Integer.parseInt(request.getParameter("rol"));
+			r.setIdRol(Iderol);
+			l.setNombreRol(r);
+			String usuario=l.getUsuario();
+		    String password=l.getPassword();
 			
-			cont.add(r,l.getUsuario(), l.getPassword());
+			cont.add(usuario, password,r);
 			response.sendRedirect("index.jsp");
 		}
 		

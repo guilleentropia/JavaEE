@@ -14,8 +14,8 @@ public class loginDao implements genericDao<Login> {
 	private final String SQL_INSERT = "INSERT INTO login (user, password, idRol) VALUES (?, ?, ?)";
 	private final String SQL_DELETE = "DELETE FROM login WHERE idLogin = ?";
 	private final String SQL_UPDATE = "UPDATE login SET user = ?, password = ?, idRol =? WHERE idLogin = ? ";
-	private final String SQL_GET = "SELECT * FROM login WHERE ( idLogin = ?)";
-	private final String SQL_GET_ALL = "SELECT * FROM login";
+	private final String SQL_GET = "SELECT * FROM login l join rol r on l.idRol= r.idRol WHERE ( idLogin = ?)";
+	private final String SQL_GET_ALL = "SELECT idLogin,user, password, r.descripcion FROM login l join rol r on l.idRol = r.idRol" ;
 	private final String SQL_LOG = "SELECT * FROM login WHERE user = ? and password=?";
 	
 	private final connectionDB conn = connectionDB.getConnection();
@@ -27,10 +27,10 @@ public class loginDao implements genericDao<Login> {
 			PreparedStatement ps;
 			ps = conn.getConn().prepareStatement(SQL_INSERT);
 			
-			ps.setInt(1, c.getNombreRol().getIdRol());
-			ps.setString(2, c.getUsuario());
-			ps.setString(3, c.getPassword());
 			
+			ps.setString(1, c.getUsuario());
+			ps.setString(2, c.getPassword());
+			ps.setInt(3, c.getNombreRol().getIdRol());
 						
 			if(ps.executeUpdate() > 0) {
 				return true;
@@ -105,7 +105,7 @@ public class loginDao implements genericDao<Login> {
 				l.setIdLogin(res.getInt("idLogin"));
 				l.setUsuario(res.getString("user"));
 				l.setPassword(res.getString("password"));
-				r.setIdRol(res.getInt("idRol"));
+				l.setNombreRol(r);
 				r.setDescripcion(res.getString("descripcion"));
 							  }
 			
@@ -157,15 +157,15 @@ try {
 			ps = conn.getConn().prepareStatement(SQL_GET_ALL);
 			res = ps.executeQuery();
 			
-			Rol r = new Rol();
+			
 			
 			while(res.next()) {
-				
+				Rol r = new Rol();
 				Login l = new Login();
 				l.setIdLogin(res.getInt("idLogin"));
 				l.setUsuario(res.getString("user"));
 				l.setPassword(res.getString("password"));
-				r.setIdRol(res.getInt("idRol"));
+				l.setNombreRol(r);
 				r.setDescripcion(res.getString("descripcion"));
 				
 				

@@ -5,16 +5,16 @@
 <head>
 <meta charset="${encoding}">
 <link rel="stylesheet" type="text/css" href="Css/Style.css" /> 
-<title>Insert title here</title>
+<title>Agregar Usuario</title>
 </head>
 <body>
 
 <form method="post" action="AddLogin" class="form">
-<p >Agregar Login</p>
+<p >Agregar Usuario</p>
 <div class="contiene">
 	<br><br>
 	
-	<br><br>
+	
 		<label style="color:black">Rol :</label>
 		<select style="width:350px" id="rol" name="rol" onchange="rol" required
 		oninvalid="setCustomValidity('Seleccione un Rol por favor...')" 
@@ -26,10 +26,7 @@
 		</select>
 		
 	
-	
-	
-	
-	
+	<br><br>
 	
 	
 	<div style="color:black">

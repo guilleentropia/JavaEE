@@ -15,6 +15,7 @@
 			
 			<th>Usuario</th>
 			<th>Contraseña</th>
+			<th>Rol</th>
 			<th>Modificar</th>
 		    <th>Eliminar</th>
 		    
@@ -25,6 +26,7 @@
 		    
 			<td>${b.usuario}</td>
 			<td>${b.password}</td>
+			<td>${b.nombreRol.descripcion}</td>
 			<td width=50px>
 				 <form name = "modificar" method="get" action="UpdateLogin" class="acciones">
 					<a href="/EjemploMavenProject/UpdateLogin?Id=${b.idLogin}">

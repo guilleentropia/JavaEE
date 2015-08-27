@@ -23,7 +23,7 @@
 			 <label style="color:black">Persona :</label>
 		<select style="width:350px" id="person" name="person" onchange="person" required
 		oninvalid="setCustomValidity('Seleccione una Persona por favor...')" 
-        oninput="setCustomValidity('')">
+        oninput="setCustomValidity('')" disabled>
 		<option value="${person.idPerson}">${person.namePerson}</option>
 		</select>
 			
@@ -34,7 +34,7 @@
 			<label style="color:black">Comic :</label>
 		<select style="width:350px" id="comic" name="comic" onchange="comic" required
 		oninvalid="setCustomValidity('Seleccione un Comic por favor...')" 
-        oninput="setCustomValidity('')">
+        oninput="setCustomValidity('')" disabled>
 		
 		<option value="${comic.idComic}">${comic.nameComic}</option>
 		

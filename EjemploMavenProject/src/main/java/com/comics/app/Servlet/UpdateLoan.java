@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.comics.app.Controller.loanController;
-import com.comics.app.Model.Comic;
+
 import com.comics.app.Model.Loan;
-import com.comics.app.Model.Person;
+
 
 /**
  * Servlet implementation class UpdateLoan
@@ -63,10 +63,7 @@ public class UpdateLoan extends HttpServlet {
 			Loan l = new Loan();
 			int prestamo = Integer.parseInt(request.getParameter("Id"));
 			l.setIdLoan(prestamo);
-			Person p = l.getPerson();
-			Comic c= l.getComic();
-			l.setPerson(p);
-			l.setComic(c);
+			l.setDate(request.getParameter("fecha"));
 			cont.update(l);
 			
 			

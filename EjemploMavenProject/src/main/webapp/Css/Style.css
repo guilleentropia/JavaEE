@@ -151,3 +151,79 @@ textarea
 	background-color: #F2F1EF;
 	 border: 1px solid black; 
 }
+
+header{
+	width: 90%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+nav{
+	background: #F9690E;
+	margin-top: 20px;
+	position: relative;
+	
+}
+
+nav ul{
+	list-style: none;
+	margin: 0;
+	overflow: hidden;
+}
+
+
+nav > ul > li {
+	float: left;
+	padding: 10px 20px;
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
+	font-size: 30px;
+	font-style: bold;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.3999996185303px;
+	color: white;
+	width: 275px;
+	border: 1px solid #EB9532;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #fff;
+	display: block;
+	padding: 10px 20px;
+}
+
+nav ul li a:hover{
+	background: #3669a3;
+}
+
+nav > ul > li:hover div{
+	display: table;
+}
+
+
+/* Submenu */
+nav ul li div{
+	width: 500px;
+	position: absolute;
+	left: 100;
+	background: #ccc;
+	box-sizing:border-box;
+	display: none;
+}
+
+
+nav ul li div ul{
+	width: 20%;
+	display: table-cell;
+	border-right:1px solid rgba(255,255,255,.5);
+	box-sizing:border-box;
+}
+
+nav ul li div ul:last-child{
+	border: none;
+}
+
+nav ul li div ul li a{
+	color:#000;
+}

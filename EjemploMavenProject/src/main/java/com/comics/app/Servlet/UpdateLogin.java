@@ -7,20 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.comics.app.Controller.comicController;
-import com.comics.app.Model.Comic;
+
+import com.comics.app.Controller.loginController;
+
+import com.comics.app.Model.Login;
 
 /**
- * Servlet implementation class AddComic
+ * Servlet implementation class UpdateLogin
  */
-@WebServlet("/AddComic")
-public class AddComic extends HttpServlet {
+@WebServlet("/UpdateLogin")
+public class UpdateLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddComic() {
+    public UpdateLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,32 +32,47 @@ public class AddComic extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try
+		{
+			int id = Integer.parseInt(request.getParameter("Id"));
+			loginController cont = new loginController();
+			Login l = cont.get(id);
+			
+			request.setAttribute("login",l);
+			
+			
+			getServletContext().getRequestDispatcher("/UpdateLogin.jsp").
+			forward(request, response);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try{
-			comicController cont = new comicController();
-		
-			Comic c = new Comic();
-		
-			c.setNameComic(request.getParameter("Name"));
-			c.setCompanyComic(request.getParameter("CompanyName"));
-			int Quantity = Integer.parseInt(request.getParameter("Quantity"));
-			c.setQuantityComic(Quantity);
-			c.setReviewComic(request.getParameter("Review"));
-			cont.add(c);
-			response.sendRedirect("index.jsp");
+
+		try
+		{
+			loginController cont = new loginController();
+			Login l = new Login();
+			int Ide = Integer.parseInt(request.getParameter("Id"));
+			l.setIdLogin(Ide);
+			l.setUsuario(request.getParameter("user"));
+			l.setPassword(request.getParameter("password"));
+			
+			cont.update(l);
+			
+			getServletContext().getRequestDispatcher("/index.jsp").
+			forward(request, response);
 		}
-		
 		catch(Exception ex)
 		{
 			ex.printStackTrace();
 		}
-		
 	}
 
 }

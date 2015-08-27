@@ -7,20 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.comics.app.Controller.comicController;
-import com.comics.app.Model.Comic;
+
+import com.comics.app.Controller.loginController;
+
+import com.comics.app.Model.Login;
 
 /**
- * Servlet implementation class AddComic
+ * Servlet implementation class AddLogin
  */
-@WebServlet("/AddComic")
-public class AddComic extends HttpServlet {
+@WebServlet("/AddLogin")
+public class AddLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddComic() {
+    public AddLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,18 +38,15 @@ public class AddComic extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try{
-			comicController cont = new comicController();
+			loginController cont = new loginController();
 		
-			Comic c = new Comic();
+			Login l = new Login();
 		
-			c.setNameComic(request.getParameter("Name"));
-			c.setCompanyComic(request.getParameter("CompanyName"));
-			int Quantity = Integer.parseInt(request.getParameter("Quantity"));
-			c.setQuantityComic(Quantity);
-			c.setReviewComic(request.getParameter("Review"));
-			cont.add(c);
+			l.setUsuario(request.getParameter("user"));
+			l.setPassword(request.getParameter("password"));
+			
+			cont.add(l);
 			response.sendRedirect("index.jsp");
 		}
 		
@@ -55,7 +54,6 @@ public class AddComic extends HttpServlet {
 		{
 			ex.printStackTrace();
 		}
-		
 	}
 
 }

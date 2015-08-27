@@ -7,20 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.comics.app.Controller.comicController;
-import com.comics.app.Model.Comic;
+
+import com.comics.app.Controller.loginController;
+
+import com.comics.app.Model.Login;
 
 /**
- * Servlet implementation class AddComic
+ * Servlet implementation class DeleteLogin
  */
-@WebServlet("/AddComic")
-public class AddComic extends HttpServlet {
+@WebServlet("/DeleteLogin")
+public class DeleteLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddComic() {
+    public DeleteLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,6 +32,23 @@ public class AddComic extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try
+		{
+			int id = Integer.parseInt(request.getParameter("Id"));
+		
+			loginController cont = new loginController();
+			Login l = cont.get(id);
+		
+			request.setAttribute("login",l);
+		
+		
+			getServletContext().getRequestDispatcher("/DeleteLogin.jsp").
+			forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -37,25 +56,20 @@ public class AddComic extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try{
-			comicController cont = new comicController();
-		
-			Comic c = new Comic();
-		
-			c.setNameComic(request.getParameter("Name"));
-			c.setCompanyComic(request.getParameter("CompanyName"));
-			int Quantity = Integer.parseInt(request.getParameter("Quantity"));
-			c.setQuantityComic(Quantity);
-			c.setReviewComic(request.getParameter("Review"));
-			cont.add(c);
-			response.sendRedirect("index.jsp");
-		}
-		
-		catch(Exception ex)
+		try
 		{
-			ex.printStackTrace();
-		}
+		loginController cont = new loginController();
+		int borrar = Integer.parseInt(request.getParameter("Id"));
 		
+		cont.delete(borrar);
+		
+		getServletContext().getRequestDispatcher("/index.jsp").
+		forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

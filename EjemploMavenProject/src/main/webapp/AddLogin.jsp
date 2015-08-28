@@ -7,11 +7,7 @@
 <link rel="stylesheet" type="text/css" href="Css/Style.css" /> 
 <title>Agregar Usuario</title>
 </head>
-<%
-	if (session.getAttribute("rol") == null || session.getAttribute("rol")!="ADMINISTRADOR") {
-		response.sendRedirect("Login.jsp");
-	}
-%>
+
 <body>
 
 <form method="post" action="AddLogin" class="form">
@@ -53,6 +49,27 @@
 
 </form>
 
+<c:set var="compare" value="${ sessionScope.rol}">
+	</c:set>
+	<c:choose>
+		<c:when test="${compare=='USUARIO'}">
+			<%
+				response.sendRedirect("Login.jsp");
+			%>
+
+		</c:when>
+		<c:when test="${compare =='VISITANTE'}">
+			<%
+			response.sendRedirect("Login.jsp");
+			%>
+		</c:when>
+		
+		<c:when test="${compare == null}">
+			<%
+			response.sendRedirect("Login.jsp");
+			%>
+		</c:when>
+	</c:choose>
 
 </body>
 </html>

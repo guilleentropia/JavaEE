@@ -55,6 +55,25 @@
    <button>Volver al Inicio</button>
 </a>
 
+<c:set var="compare" value="${ sessionScope.rol}">
+	</c:set>
+	<c:choose>
+		<c:when test="${compare=='USUARIO'}">
+
+
+		</c:when>
+		<c:when test="${compare =='VISITANTE'}">
+			<%
+				response.sendRedirect("Login.jsp");
+			%>
+		</c:when>
+		
+		<c:when test="${compare == null}">
+			<%
+				response.sendRedirect("Login.jsp");
+			%>
+		</c:when>
+	</c:choose>
 
 
 </body>

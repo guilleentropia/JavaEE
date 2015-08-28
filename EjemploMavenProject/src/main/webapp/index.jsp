@@ -9,12 +9,12 @@
 <title>Comic Store</title>
 </head>
 
-<% 
+<%
+	if (session.getAttribute("rol") == null) {
+		response.sendRedirect("Login.jsp");
+	}
+%>
 
-if (session.getAttribute("rol")== null){
-	response.sendRedirect("Login.jsp");
-}%> 
-	
 
 
 <body class="body">
@@ -39,6 +39,7 @@ if (session.getAttribute("rol")== null){
 									Usuarios</a></li>
 							<li><a href="/EjemploMavenProject/AddLogin" class="lista">Agregar
 									Usuario</a></li>
+							
 						</ul>
 					</div>
 				</li>
@@ -49,8 +50,9 @@ if (session.getAttribute("rol")== null){
 						<ul>
 							<li><a href="ListComic" class="lista">Mostrar todos los
 									Comics</a></li>
-							<li id="addcomic"><a href="/EjemploMavenProject/AddComic.jsp"
-								class="lista">Agregar Comic</a></li>
+							<li id="addcomic"><a
+								href="/EjemploMavenProject/AddComic.jsp" class="lista">Agregar
+									Comic</a></li>
 						</ul>
 					</div>
 				</li>
@@ -74,8 +76,8 @@ if (session.getAttribute("rol")== null){
 						<ul>
 							<li><a href="ListLoan" class="lista">Mostrar todos los
 									Prestamos</a></li>
-							<li id="addloan"><a href="/EjemploMavenProject/AddLoan.jsp" class="lista">Agregar
-									Prestamo</a></li>
+							<li id="addloan"><a href="/EjemploMavenProject/AddLoan.jsp"
+								class="lista">Agregar Prestamo</a></li>
 						</ul>
 					</div>
 				</li>
@@ -95,11 +97,16 @@ if (session.getAttribute("rol")== null){
 		<c:when test="${compare=='USUARIO'}">
 			<script type="text/javascript">
 				document.getElementById("users").style.visibility = "hidden";
+			</script>
+
+		</c:when>
+		<c:when test="${compare =='VISITANTE'}">
+			<script type="text/javascript">
+				document.getElementById("users").style.visibility = "hidden";
 				document.getElementById("addcomic").style.visibility = "hidden";
 				document.getElementById("addloan").style.visibility = "hidden";
 				document.getElementById("persons").style.visibility = "hidden";
 			</script>
-			
 		</c:when>
 		<c:when test="${compare =='ADMINISTRADOR'}">
 

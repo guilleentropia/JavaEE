@@ -35,14 +35,17 @@ public class LoginServ extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session=request.getSession(); 
+		session.invalidate();
 		
+		response.sendRedirect("Login.jsp");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+              
 		
 		try{
 			loginController cont = new loginController();

@@ -10,6 +10,7 @@
 <body>
 <form method="post" action="LoginServ" class="form">
 <p >Ingresar</p>
+
 <div class="contiene">
 	<br>
 	<p style="color:red; font-style:bold; font-size:16px">   ${message}</p>
@@ -29,7 +30,7 @@
 	
 </div>
 <input type="submit" value="Guardar">
-<a href="/EjemploMavenProject/index.jsp"> Cancelar</a>
+<a href="/EjemploMavenProject/Login.jsp"> Cancelar</a>
 
 </form>
 

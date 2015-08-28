@@ -59,5 +59,20 @@
 <a href="/EjemploMavenProject/index.jsp"  style="margin: 0 auto; display:block; text-align: center">
    <button>Volver al Inicio</button>
 </a>
+
+
+<c:set var="compare" value="${ sessionScope.rol}">
+	</c:set>
+	<c:choose>
+				
+		<c:when test="${compare == null}">
+			<%
+				response.sendRedirect("Login.jsp");
+			%>
+		</c:when>
+	</c:choose>
+
+
+
 </body>
 </html>

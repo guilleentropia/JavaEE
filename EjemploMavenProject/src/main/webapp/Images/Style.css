@@ -32,12 +32,16 @@ th {
 }
 
 .body {
-	background-image: url("/EjemploMavenProject/Images/parallax_009.jpg");
+	background-color: rgba(24, 20, 14, 0.9);
+	background: rgba(24, 20, 14, 0.9);
+	color: rgba(24, 20, 14, 0.9);
 	text-align: center
 }
 
 body {
-	background-image: url("/EjemploMavenProject/Images/parallax_009.jpg");
+	background-color: rgba(24, 20, 14, 0.9);
+	background: rgba(24, 20, 14, 0.9);
+	color: rgba(24, 20, 14, 0.9);
 }
 
 }
@@ -150,23 +154,12 @@ nav {
 	background: #F9690E;
 	margin-top: 20px;
 	position: relative;
-	border: none 5px #000000;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
 }
 
 nav ul {
 	list-style: none;
 	margin: 0;
 	overflow: hidden;
-	border: none 5px #000000;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial,
-		sans-serif;
-	
 }
 
 nav>ul>li {
@@ -176,7 +169,7 @@ nav>ul>li {
 		sans-serif;
 	font-size: 20px;
 	font-style: bold;
-	color: rgba(43, 44, 44, 0.9);
+	color: white;
 	width: 150px;
 	border: 1px solid #EB9532;
 }
@@ -185,7 +178,6 @@ nav ul li a {
 	text-decoration: none;
 	color: #fff;
 	display: block;
-	color: rgba(43, 44, 44, 0.9);
 }
 
 nav ul li a:hover {

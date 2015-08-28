@@ -39,12 +39,12 @@
 									Usuarios</a></li>
 							<li><a href="/EjemploMavenProject/AddLogin" class="lista">Agregar
 									Usuario</a></li>
-							
+
 						</ul>
 					</div>
 				</li>
-
-
+			
+			
 				<li>Comics
 					<div>
 						<ul>
@@ -56,8 +56,9 @@
 						</ul>
 					</div>
 				</li>
+			
 
-
+		
 
 				<li id="persons">Personas
 					<div>
@@ -70,7 +71,9 @@
 					</div>
 				</li>
 
+			
 
+			
 				<li>Prestamos
 					<div>
 						<ul>
@@ -86,10 +89,12 @@
 
 		</nav>
 	</header>
-
+	<br>
+	<br>
+	<br>
 	<img
 		src="http://howtolovecomics.com/wp-content/uploads/2013/09/shop_photo1.jpg?aac610"
-		width=250px height=250px>
+		width=450px height=450px>
 
 	<c:set var="compare" value="${ sessionScope.rol}">
 	</c:set>

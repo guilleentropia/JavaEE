@@ -29,7 +29,7 @@
 	
 	
 </div>
-<input type="submit" value="Guardar">
+<input type="submit" value="Ingresar">
 <a href="/EjemploMavenProject/Login.jsp"> Cancelar</a>
 
 </form>

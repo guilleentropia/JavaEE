@@ -22,7 +22,7 @@
 			<div style="color:black">
 				<label for="namePerson">Nombre</label> <input name="Name" id="Name" 
 					value="${person.namePerson}"
-					required 
+					required maxlength=45
 				oninvalid="setCustomValidity('Debe ingresar un Nombre!')" 
        		    oninput="setCustomValidity('')" /><br><br>
 			</div>
@@ -31,7 +31,7 @@
 			<div style="color:black">
 				<label for="telephonePerson">Telefono</label> <input type ="number" name="Telephone" id="Telephone" 
 					value="${person.telephonePerson}"
-					required 
+					required maxlength=45
 				oninvalid="setCustomValidity('Ingrese un numero de Telefono valido')" 
         		oninput="setCustomValidity('')" /><br><br>
 			</div>			

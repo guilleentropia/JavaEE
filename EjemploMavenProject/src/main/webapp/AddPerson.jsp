@@ -15,14 +15,14 @@
 		<div class="contiene">
 			<br>
 			<div style="color: black">
-				<label>Name</label> <input type="text" name="Name" required
+				<label>Name</label> <input type="text" name="Name" required maxlength=45
 					oninvalid="setCustomValidity('Debe ingresar un Nombre!')"
 					oninput="setCustomValidity('')"><br>
 				<br>
 			</div>
 			<div style="color: black">
 				<label>Telephone</label> <input type="number" name="Telephone"
-					min="1" max="9999999" required
+					min="1" max="9999999" required 
 					oninvalid="setCustomValidity('Ingrese un numero de Telefono valido')"
 					oninput="setCustomValidity('')"><br>
 				<br>

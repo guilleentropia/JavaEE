@@ -21,7 +21,7 @@
 			<div style="color:black">
 				<label for="user">Usuario</label>
 				<input type ="text"name="user" id="user" value="${login.usuario}"
-				 required
+				 required maxlength=45
 				 oninvalid="setCustomValidity('Ingrese un valor valido para Usuario!')"
                  oninput="setCustomValidity('')"/><br><br>
 			</div>
@@ -29,7 +29,7 @@
 			<div style="color:black">
 				<label for="password">Contraseña</label> 
 				<input name="password" id="password" value="${login.password}"
-					required 
+					required  maxlength=45
 					oninvalid="setCustomValidity('Debe ingresar una Contraseña!')" 
         			oninput="setCustomValidity('')"/><br><br>
 			</div>

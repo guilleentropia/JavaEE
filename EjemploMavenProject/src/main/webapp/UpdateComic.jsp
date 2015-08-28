@@ -21,7 +21,7 @@
 			<div style="color: black">
 				<label for="quantityComic">Cantidad</label> <input type="number"
 					name="Quantity" id="Quantity" value="${comic.quantityComic}"
-					required min="1" max="99999"
+					required min="1" max="99"
 					oninvalid="setCustomValidity('Ingrese un valor valido para Cantidad por favor!')"
 					oninput="setCustomValidity('')" /><br>
 				<br>
@@ -29,7 +29,7 @@
 
 			<div style="color: black">
 				<label for="nameComic">Nombre</label> <input name="Name" id="Name"
-					value="${comic.nameComic}" required
+					value="${comic.nameComic}" required maxlength=45
 					oninvalid="setCustomValidity('Debe ingresar un Nombre!')"
 					oninput="setCustomValidity('')" /><br>
 				<br>
@@ -37,7 +37,7 @@
 
 			<div style="color: black">
 				<label for="companyComic">Compania</label> <input name="Company"
-					id="Company" value="${comic.companyComic}" width="100px" required
+					id="Company" value="${comic.companyComic}" width="100px" required maxlength=45
 					oninvalid="setCustomValidity('Debe ingresar la Compania!')"
 					oninput="setCustomValidity('')" /><br>
 				<br>
@@ -45,7 +45,7 @@
 
 			<div style="color: black">
 				<label for="reviewComic">Review</label>
-				<textarea name="Review" id="Review" rows="2" cols="60" required
+				<textarea name="Review" id="Review" rows="2" cols="60" required maxlength=500
 					oninvalid="setCustomValidity('Ingrese una Review!')"
 					oninput="setCustomValidity('')">${comic.reviewComic}</textarea>
 				<br>

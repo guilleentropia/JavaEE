@@ -18,28 +18,28 @@
 		<div class="contiene">
 			<br>
 			<div style="color: black">
-				<label>Name</label> <input type="text" name="Name" required
+				<label>Name</label> <input type="text" name="Name" required maxlength=45
 					oninvalid="setCustomValidity('Debe ingresar un Nombre!')"
 					oninput="setCustomValidity('')"><br>
 				<br>
 			</div>
 			<div style="color: black">
 				<label>Company Name</label> <input type="text" name="CompanyName"
-					required
+					required maxlength=45
 					oninvalid="setCustomValidity('Debe ingresar la Compania!')"
 					oninput="setCustomValidity('')"><br>
 				<br>
 			</div>
 			<div style="color: black">
 				<label>Quantity</label> <input type="number" name="Quantity"
-					required min="1" max="99999"
+					required min="1" max="99"
 					oninvalid="setCustomValidity('Ingrese un valor valido para Cantidad por favor!')"
 					oninput="setCustomValidity('')"><br>
 				<br>
 			</div>
 			<div style="color: black">
 				<label>Review</label>
-				<textarea name="Review" style="width: 568px; height: 65px" required
+				<textarea name="Review" style="width: 568px; height: 65px" required maxlength=500
 					oninvalid="setCustomValidity('Ingrese una Review!')"
 					oninput="setCustomValidity('')"></textarea>
 				<br>

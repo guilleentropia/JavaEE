@@ -17,7 +17,7 @@
 	
 	
 		<label style="color:black">Rol :</label>
-		<select style="width:350px" id="rol" name="rol" onchange="rol" required
+		<select style="width:350px" id="rol" name="rol" onchange="rol" required 
 		oninvalid="setCustomValidity('Seleccione un Rol por favor...')" 
         oninput="setCustomValidity('')">
 		<option value="">Seleccione un Rol</option>
@@ -32,13 +32,13 @@
 	
 	<div style="color:black">
 		<label>Usuario</label>
-		<input type="text" name="user" required 
+		<input type="text" name="user" required  maxlength=45
 		oninvalid="setCustomValidity('Debe ingresar un Usuario!')" 
         oninput="setCustomValidity('')"><br><br>
 	</div>	
 	<div style="color:black">	
 		<label>Contraseña</label>
-		<input type="password" name="password" required
+		<input type="password" name="password" required maxlength=45
 		oninvalid="setCustomValidity('Debe ingresar una contraseña')" 
         oninput="setCustomValidity('')"><br><br>
 	</div>

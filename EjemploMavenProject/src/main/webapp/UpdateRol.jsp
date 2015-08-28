@@ -22,7 +22,7 @@
 			<div style="color:black">
 				<label for="descripcion">Rol</label>
 				<input type ="text"name="descripcion" id="descripcion" value="${rol.descripcion}"
-				 required
+				 required maxlength=45
 				 oninvalid="setCustomValidity('Ingrese un nombre valido para el Rol')"
                  oninput="setCustomValidity('')"/><br><br>
 			</div>

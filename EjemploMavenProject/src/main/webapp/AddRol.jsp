@@ -16,7 +16,7 @@
 	<br>
 	<div style="color:black">
 		<label>Rol</label>
-		<input type="text" name="descripcion" required 
+		<input type="text" name="descripcion" required maxlength=45
 		oninvalid="setCustomValidity('Debe ingresar un nombre para el Rol!')" 
         oninput="setCustomValidity('')"><br><br>
 	</div>	

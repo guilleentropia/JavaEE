@@ -40,7 +40,7 @@
 		<br><br>
 		
 		<label style="color:black">Fecha :</label>
-		<input type ="date" name="fecha" required></input><label style="color:orange; width:350px">La fecha debe tener formato dd-mm-yyyy</label>
+		<input type ="date" name="fecha"></input><label style="color:orange; width:350px">La fecha debe tener formato dd-mm-yyyy</label>
 		
 		<br><br><br><br>
 		

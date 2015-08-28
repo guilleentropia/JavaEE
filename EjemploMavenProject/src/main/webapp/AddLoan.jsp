@@ -6,7 +6,7 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="Css/Style.css" /> 
-<title>Insert title here</title>
+<title>Agregar Prestamo</title>
 </head>
 
 <body>
@@ -46,7 +46,8 @@
 		
 	</div>	
 	<input type="submit" value="Guardar">
-<a href="/EjemploMavenProject/index.jsp"> Cancelar</a>
+<a href="/EjemploMavenProject/index.jsp"> 	Cancelar</a>
+<br><br>
  
 
 </form>

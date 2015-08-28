@@ -6,7 +6,7 @@
 <head>
 <meta charset="${encoding}">
 <link rel="stylesheet" type="text/css" href="Css/Style.css" />
-<title>Insert title here</title>
+<title>Agregar Comic</title>
 </head>
 
 

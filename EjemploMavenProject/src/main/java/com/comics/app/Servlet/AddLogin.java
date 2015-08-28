@@ -53,7 +53,7 @@ public class AddLogin extends HttpServlet {
 		  }
 		catch (Exception e) 
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 	}
 
@@ -81,7 +81,7 @@ public class AddLogin extends HttpServlet {
 		
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 	}
 

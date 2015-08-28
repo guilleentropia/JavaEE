@@ -48,7 +48,7 @@ public class DeleteLoan extends HttpServlet {
 		}
 		catch(Exception ex) 
 		{
-		  ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class DeleteLoan extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 		
 	}

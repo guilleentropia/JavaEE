@@ -49,7 +49,7 @@ public class ListPerson extends HttpServlet {
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 				
 		

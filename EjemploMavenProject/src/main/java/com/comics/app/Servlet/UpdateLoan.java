@@ -47,7 +47,7 @@ public class UpdateLoan extends HttpServlet {
 		}
 		catch(Exception ex) 
 		{
-		  ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 		
 	}
@@ -72,7 +72,7 @@ public class UpdateLoan extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 	}
 

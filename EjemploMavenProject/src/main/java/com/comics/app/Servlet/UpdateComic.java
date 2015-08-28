@@ -47,7 +47,7 @@ public class UpdateComic extends HttpServlet {
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 		
 		
@@ -78,7 +78,7 @@ public class UpdateComic extends HttpServlet {
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 		
 	}

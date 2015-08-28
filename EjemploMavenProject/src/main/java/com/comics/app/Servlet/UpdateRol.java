@@ -45,7 +45,7 @@ public class UpdateRol extends HttpServlet {
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class UpdateRol extends HttpServlet {
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 	}
 

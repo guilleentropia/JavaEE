@@ -56,7 +56,7 @@ public class AddLoan extends HttpServlet {
 		  }
 		catch (Exception e) 
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 	}
 

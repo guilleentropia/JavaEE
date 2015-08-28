@@ -53,7 +53,7 @@ public class AddPerson extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 		
 		

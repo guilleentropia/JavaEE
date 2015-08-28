@@ -47,7 +47,7 @@ public class DeleteLogin extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 	}
 
@@ -68,7 +68,7 @@ public class DeleteLogin extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 	}
 

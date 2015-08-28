@@ -45,7 +45,7 @@ public class UpdatePerson extends HttpServlet {
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 		
 		
@@ -70,7 +70,7 @@ public class UpdatePerson extends HttpServlet {
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();
+			throw new ServletException(ex);
 		}
 		
 	}

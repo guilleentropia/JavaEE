@@ -46,7 +46,7 @@ public class DeleteRol extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 	}
 
@@ -67,7 +67,7 @@ public class DeleteRol extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
 	}
 

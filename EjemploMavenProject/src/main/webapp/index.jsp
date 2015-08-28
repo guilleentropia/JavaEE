@@ -45,7 +45,7 @@
 				</li>
 			
 			
-				<li>Comics
+				<li id="comics">Comics
 					<div>
 						<ul>
 							<li><a href="ListComic" class="lista">Mostrar todos los
@@ -74,12 +74,12 @@
 			
 
 			
-				<li>Prestamos
+				<li id="loan">Prestamos
 					<div>
 						<ul>
 							<li><a href="ListLoan" class="lista">Mostrar todos los
 									Prestamos</a></li>
-							<li id="addloan"><a href="/EjemploMavenProject/AddLoan.jsp"
+							<li><a href="/EjemploMavenProject/AddLoan"
 								class="lista">Agregar Prestamo</a></li>
 						</ul>
 					</div>
@@ -109,8 +109,10 @@
 			<script type="text/javascript">
 				document.getElementById("users").style.visibility = "hidden";
 				document.getElementById("addcomic").style.visibility = "hidden";
-				document.getElementById("addloan").style.visibility = "hidden";
+				document.getElementById("loan").style.visibility = "hidden";
 				document.getElementById("persons").style.visibility = "hidden";
+				document.getElementById("comics").style.width = "300px";
+				document.getElementById("comics").style.textAlign ="center";
 			</script>
 		</c:when>
 		<c:when test="${compare =='ADMINISTRADOR'}">

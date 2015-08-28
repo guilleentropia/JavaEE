@@ -14,9 +14,10 @@ public class loginDao implements genericDao<Login> {
 	private final String SQL_INSERT = "INSERT INTO login (user, password, idRol) VALUES (?, ?, ?)";
 	private final String SQL_DELETE = "DELETE FROM login WHERE idLogin = ?";
 	private final String SQL_UPDATE = "UPDATE login SET user = ?, password = ?, idRol =? WHERE idLogin = ? ";
-	private final String SQL_GET = "SELECT * FROM login l join rol r on l.idRol= r.idRol WHERE ( idLogin = ?)";
+	private final String SQL_GET = "SELECT l.idLogin,l.user, l.password, r.idRol, r.descripcion FROM login l join rol r on l.idRol= r.idRol WHERE ( idLogin = ?)";
 	private final String SQL_GET_ALL = "SELECT idLogin,user, password, r.descripcion FROM login l join rol r on l.idRol = r.idRol" ;
 	private final String SQL_LOG = "SELECT * FROM login WHERE user = ? and password=?";
+	private final String SQL_GETUSER = "SELECT l.idLogin,l.user, l.password, r.idRol, r.descripcion FROM login l join rol r on l.idRol= r.idRol WHERE ( user = ?)";
 	
 	private final connectionDB conn = connectionDB.getConnection();
 
@@ -106,6 +107,38 @@ public class loginDao implements genericDao<Login> {
 				l.setUsuario(res.getString("user"));
 				l.setPassword(res.getString("password"));
 				l.setNombreRol(r);
+				r.setIdRol(res.getInt("idRol"));
+				r.setDescripcion(res.getString("descripcion"));
+							  }
+			
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conn.closeConnection();
+		}
+		return l;
+	}
+	
+	public Login getUser(String username) {
+		Login l  = new Login();
+		Rol r = new Rol();
+		
+		try {
+			
+			PreparedStatement ps;
+			ResultSet res;
+			
+			ps = conn.getConn().prepareStatement(SQL_GETUSER);
+			ps.setString(1, username);
+			
+			res = ps.executeQuery();
+			while(res.next()) {
+				l.setIdLogin(res.getInt("idLogin"));
+				l.setUsuario(res.getString("user"));
+				l.setPassword(res.getString("password"));
+				l.setNombreRol(r);
+				r.setIdRol(res.getInt("idRol"));
 				r.setDescripcion(res.getString("descripcion"));
 							  }
 			
@@ -143,6 +176,8 @@ try {
 		
 		return resultado;
 	}
+	
+	
 	
 	
 

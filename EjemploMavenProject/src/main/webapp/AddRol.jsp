@@ -7,6 +7,11 @@
 <link rel="stylesheet" type="text/css" href="Css/Style.css" /> 
 <title>Agregar Rol</title>
 </head>
+<%
+	if (session.getAttribute("rol") == null || session.getAttribute("rol")!="ADMINISTRADOR") {
+		response.sendRedirect("Login.jsp");
+	}
+%>
 <body>
 
 <form method="post" action="AddRol" class="form">

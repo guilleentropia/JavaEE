@@ -9,10 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.comics.app.Controller.loginController;
 import com.comics.app.Model.Login;
+
 
 /**
  * Servlet implementation class LoginServ
@@ -48,6 +49,7 @@ public class LoginServ extends HttpServlet {
 		
 			Login logueo = new Login();
 			
+			
 			logueo.setUsuario(request.getParameter("user"));
 			logueo.setPassword(request.getParameter("password"));
 			
@@ -55,7 +57,16 @@ public class LoginServ extends HttpServlet {
 			
 			if(cont.ingreso(logueo.getUsuario(), logueo.getPassword())==true)
 			{
-								
+				String usuario= logueo.getUsuario();
+				Login l = new Login();
+				
+			    l= cont.getUser(logueo.getUsuario());
+						
+				String rolid = l.getNombreRol().getDescripcion();
+				
+				HttpSession session=request.getSession();  	
+				session.setAttribute("usuario", usuario);
+				session.setAttribute("rol", rolid);
 				response.sendRedirect("index.jsp");
 			}
 			else

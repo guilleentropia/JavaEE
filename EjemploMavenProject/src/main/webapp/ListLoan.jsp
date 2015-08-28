@@ -8,6 +8,11 @@
 <link rel="stylesheet" type="text/css" href="Css/Style.css" /> 
 <title>Listado de Prestamos</title>
 </head>
+<%
+	if (session.getAttribute("rol") == null) {
+		response.sendRedirect("Login.jsp");
+	}
+%>
 <body>
 <p class="titulo"> Listado de Prestamos </p>
 <table>

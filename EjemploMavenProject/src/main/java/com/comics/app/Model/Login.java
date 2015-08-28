@@ -41,8 +41,9 @@ public class Login {
 	
 	
 	
-	public Login(String usuario, String password,Rol nombreRol) {
+	public Login(int idLogin, String usuario, String password,Rol nombreRol) {
 		super();
+		this.idLogin = idLogin;
 		this.usuario = usuario;
 		this.password = password;
 		this.nombreRol = nombreRol;

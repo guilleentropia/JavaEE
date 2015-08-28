@@ -7,6 +7,11 @@
 <link rel="stylesheet" type="text/css" href="Css/Style.css" /> 
 <title>Listado de Usuarios</title>
 </head>
+<%
+	if (session.getAttribute("rol") == null || session.getAttribute("rol")!="ADMINISTRADOR") {
+		response.sendRedirect("Login.jsp");
+	}
+%>
 <body>
 <p class="titulo"> Listado de Usuarios </p>
 <table>

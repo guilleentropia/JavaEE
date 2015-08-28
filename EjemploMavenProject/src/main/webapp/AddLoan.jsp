@@ -8,6 +8,11 @@
 <link rel="stylesheet" type="text/css" href="Css/Style.css" /> 
 <title>Insert title here</title>
 </head>
+<%
+	if (session.getAttribute("rol") == null || session.getAttribute("rol")!="ADMINISTRADOR") {
+		response.sendRedirect("Login.jsp");
+	}
+%>
 <body>
 <form method="post" action="AddLoan" class="form">
 <p >Agregar Prestamo</p>

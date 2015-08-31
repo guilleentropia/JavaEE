@@ -33,4 +33,10 @@ public class comicController {
 		boolean rta = comicdao.update(c);
 		return rta;
 	}
+
+	public boolean updateQuantity(Comic d) {
+		boolean rta = comicdao.updateQuantity(d);
+		return rta;
+		
+	}
 }

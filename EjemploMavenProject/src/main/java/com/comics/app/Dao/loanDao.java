@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.comics.app.Controller.comicController;
 import com.comics.app.Model.Comic;
 import com.comics.app.Model.Loan;
 import com.comics.app.Model.Person;
@@ -13,7 +14,7 @@ import com.comics.app.Model.Person;
 public class loanDao implements genericDao<Loan> {
 
 	private final String SQL_INSERT = "INSERT INTO loans (Persons_idPerson, Comics_idComic, date) VALUES (?, ?, ?)";
-	private final String SQL_GET_ALL = "select idLoan, c.nameComic, p.namePerson, l.date from  loans l join comics c on l.Comics_idComic = c.idComic join persons p on l.Persons_idPerson = p.idPerson ";
+	private final String SQL_GET_ALL = "select idLoan,c.idComic, c.nameComic,p.idPerson, p.namePerson, l.date from  loans l join comics c on l.Comics_idComic = c.idComic join persons p on l.Persons_idPerson = p.idPerson ";
 	private final String SQL_DELETE = "DELETE FROM loans WHERE idLoan = ?";
 	private final String SQL_GET = "SELECT * FROM loans l  join comics c on l.Comics_idComic = c.idComic join persons p on l.Persons_idPerson = p.idPerson WHERE  idLoan = ?";
 	private final String SQL_UPDATE = "UPDATE loans l SET l.date = ? WHERE idLoan = ?";
@@ -130,20 +131,24 @@ public class loanDao implements genericDao<Loan> {
 			
 			ps = conn.getConn().prepareStatement(SQL_GET_ALL);
 			res = ps.executeQuery();
+			 
+			    comicController comcont = new comicController();
 			
-			Comic c = new Comic();
-			Person p = new Person();
 			
 			while(res.next()) {
 				
+				Comic c = new Comic();
+				Person p = new Person();
 				Loan l = new Loan();
+				
 				l.setIdLoan(res.getInt("idLoan"));
-				
+								
+				c= comcont.get(res.getInt("idComic"));
 				l.setComic(c);
-				c.setNameComic(res.getString("nameComic"));
 				
-				l.setPerson(p);
 				p.setNamePerson(res.getString("namePerson"));
+				l.setPerson(p);
+				
 
 				l.setDate(res.getString("date"));
 				

@@ -72,12 +72,12 @@ public class AddLoan extends HttpServlet {
 		Person p = new Person();
 		int Ide = Integer.parseInt(request.getParameter("comic"));
 		c.setIdComic(Ide);
-		Comic d = new Comic();
+	    Comic d = new Comic();
+		l.setComic(c);
 		d= camic.get(Ide);
 		int cantidad = d.getQuantityComic();
 		d.setQuantityComic(cantidad-1);
-		camic.update(d);
-		l.setComic(c);
+		camic.updateQuantity(d);
 		int Ideper = Integer.parseInt(request.getParameter("person"));
 		p.setIdPerson(Ideper);
 		l.setPerson(p);

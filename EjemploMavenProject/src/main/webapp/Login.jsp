@@ -13,9 +13,10 @@
 
 <div class="contiene">
 	<br>
+	<p style="color:black;">Si no está registrado, puede ingresar como visitante. Usuario: 'demo'  Contraseña: 'demo'</p>
 	<p style="color:red; font-style:bold; font-size:16px">   ${message}</p>
 	<div style="color:black">
-		<label>Usuario</label>
+			<label>Usuario</label>
 		<input type="text" name="user" required 
 		oninvalid="setCustomValidity('Debe ingresar un Usuario!')" 
         oninput="setCustomValidity('')"><br><br>

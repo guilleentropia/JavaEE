@@ -66,11 +66,17 @@ public class AddLoan extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		loanController cont = new loanController();
+		comicController camic = new comicController();
 		Loan l = new Loan();
 		Comic c = new Comic();
 		Person p = new Person();
 		int Ide = Integer.parseInt(request.getParameter("comic"));
 		c.setIdComic(Ide);
+		Comic d = new Comic();
+		d= camic.get(Ide);
+		int cantidad = d.getQuantityComic();
+		d.setQuantityComic(cantidad-1);
+		camic.update(d);
 		l.setComic(c);
 		int Ideper = Integer.parseInt(request.getParameter("person"));
 		p.setIdPerson(Ideper);
@@ -79,6 +85,7 @@ public class AddLoan extends HttpServlet {
 		String fecha = l.getDate();
 		
 		cont.addLoan(c, p, fecha);
+		
 		
 		response.sendRedirect("index.jsp");
 	}

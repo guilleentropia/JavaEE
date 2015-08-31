@@ -11,6 +11,7 @@ public class comicDao implements genericDao<Comic> {
 	private final String SQL_INSERT = "INSERT INTO comics (nameComic, companyComic, reviewComic, quantityComic) VALUES (?, ?, ?, ?)";
 	private final String SQL_DELETE = "DELETE FROM comics WHERE idComic = ?";
 	private final String SQL_UPDATE = "UPDATE comics SET nameComic = ?, companyComic = ?, reviewComic = ?, quantityComic = ? WHERE idComic = ? ";
+	private final String SQL_UPDATE_QUANTITY = "UPDATE comics SET quantityComic = ? WHERE idComic = ? ";
 	private final String SQL_GET_ALL = "SELECT * FROM comics";
 	private final String SQL_GET = "SELECT * FROM comics WHERE ( idComic = ?)";
 	
@@ -48,6 +49,26 @@ public class comicDao implements genericDao<Comic> {
 			ps.setString(3, c.getReviewComic());
 			ps.setInt(4, c.getQuantityComic());
 			ps.setInt(5, c.getIdComic());
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conn.closeConnection();
+		}
+		return false;
+	}
+	
+	
+	public boolean updateQuantity(Comic c) {
+		PreparedStatement ps;
+		
+		try {
+			ps = conn.getConn().prepareStatement(SQL_UPDATE_QUANTITY);
+			ps.setInt(1, c.getQuantityComic());
+			ps.setInt(2, c.getIdComic());
 			
 			if(ps.executeUpdate() > 0) {
 				return true;

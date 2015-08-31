@@ -105,6 +105,16 @@
 			</script>
 
 		</c:when>
+		<c:when test="${compare == null}">
+			<script type="text/javascript">
+				document.getElementById("users").style.visibility = "hidden";
+				document.getElementById("addcomic").style.visibility = "hidden";
+				document.getElementById("loan").style.visibility = "hidden";
+				document.getElementById("persons").style.visibility = "hidden";
+				document.getElementById("comics").style.width = "300px";
+				document.getElementById("comics").style.textAlign ="center";
+			</script>
+		</c:when>
 		<c:when test="${compare =='VISITANTE'}">
 			<script type="text/javascript">
 				document.getElementById("users").style.visibility = "hidden";

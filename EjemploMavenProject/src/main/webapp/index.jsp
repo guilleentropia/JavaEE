@@ -6,7 +6,7 @@
 <head>
 <meta charset="${encoding}">
 <link rel="stylesheet" type="text/css" href="Css/Style.css" />
-<title>Comic Store</title>
+<title >Comic Store</title>
 </head>
 
 <%
@@ -19,7 +19,7 @@
 
 <body class="body">
 
-	<p style="text-align: right; color: white; font-size: 16px">
+	<p style="text-align: right; color: orange; font-size: 16px; font-style:bold;">
 		Bienvenido!!
 		<c:out value="${sessionScope.usuario}">
 		</c:out>
@@ -27,7 +27,7 @@
 		<a style="color: white;" href="/EjemploMavenProject/Logout">Logout</a>
 
 	</p>
-	<h2>COMIC STORE</h2>
+	<h2 class="tituloinicial">COMIC STORE</h2>
 
 	<header>
 		<nav>

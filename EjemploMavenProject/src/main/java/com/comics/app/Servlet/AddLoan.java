@@ -24,47 +24,48 @@ import com.comics.app.Model.Person;
 @WebServlet("/AddLoan")
 public class AddLoan extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddLoan() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AddLoan() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-		try{
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
 			comicController cont = new comicController();
-		
+
 			List<Comic> lista = new ArrayList<Comic>();
 			lista = cont.getAll();
 			request.setAttribute("lista", lista);
-		
-		
+
 			personController pers = new personController();
 			List<Person> listaper = new ArrayList<Person>();
 			listaper = pers.getAll();
 			request.setAttribute("listaper", listaper);
-		
-			RequestDispatcher rd = request.getRequestDispatcher("AddLoan.jsp");  
-			rd.forward(request, response);  
-		  }
-		catch (Exception e) 
-		{
+
+			RequestDispatcher rd = request.getRequestDispatcher("AddLoan.jsp");
+			rd.forward(request, response);
+		} catch (Exception e) {
 			throw new ServletException(e);
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		loanController cont = new loanController();
 		comicController camic = new comicController();
 		Loan l = new Loan();
@@ -72,22 +73,31 @@ public class AddLoan extends HttpServlet {
 		Person p = new Person();
 		int Ide = Integer.parseInt(request.getParameter("comic"));
 		c.setIdComic(Ide);
-	    Comic d = new Comic();
+		Comic d = new Comic();
 		l.setComic(c);
-		d= camic.get(Ide);
+		d = camic.get(Ide);
 		int cantidad = d.getQuantityComic();
-		d.setQuantityComic(cantidad-1);
-		camic.updateQuantity(d);
-		int Ideper = Integer.parseInt(request.getParameter("person"));
-		p.setIdPerson(Ideper);
-		l.setPerson(p);
-		l.setDate(request.getParameter("fecha"));
-		String fecha = l.getDate();
-		
-		cont.addLoan(c, p, fecha);
-		
-		
-		response.sendRedirect("index.jsp");
+		if (cantidad > 0) {
+			d.setQuantityComic(cantidad - 1);
+			camic.updateQuantity(d);
+			int Ideper = Integer.parseInt(request.getParameter("person"));
+			p.setIdPerson(Ideper);
+			l.setPerson(p);
+			l.setDate(request.getParameter("fecha"));
+			String fecha = l.getDate();
+
+			cont.addLoan(c, p, fecha);
+
+			response.sendRedirect("index.jsp");
+
+		}
+
+		else {
+			
+			response.sendRedirect("Errores.jsp");
+
+		}
+
 	}
 
 }

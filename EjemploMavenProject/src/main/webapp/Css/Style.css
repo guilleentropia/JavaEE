@@ -1,3 +1,14 @@
+.tituloinicial{
+	text-align: center;
+    margin: auto;
+    font-family: "League-Gothic", Courier;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: #222;
+    text-shadow: 0px 2px 3px #666;
+}
+
+
 table, td, th {
 	border: inset 5px #000000;
 	-moz-border-radius: 5px;

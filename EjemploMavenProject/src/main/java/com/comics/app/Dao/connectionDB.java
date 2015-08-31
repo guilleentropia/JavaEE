@@ -11,6 +11,7 @@ public class connectionDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/comics", "root", "root");
+						
 		} catch (ClassNotFoundException e) {
 			throw new ExceptionInInitializerError("El Driver JDBC no se encuentra en el directorio!");
 		}

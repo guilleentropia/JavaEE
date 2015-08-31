@@ -23,9 +23,7 @@
 		Bienvenido!!
 		<c:out value="${sessionScope.usuario}">
 		</c:out>
-
 		<a style="color: white;" href="/EjemploMavenProject/Logout">Logout</a>
-
 	</p>
 	<h2 class="tituloinicial">COMIC STORE</h2>
 
@@ -92,9 +90,9 @@
 	<br>
 	<br>
 	<br>
-	<img
-		src="http://howtolovecomics.com/wp-content/uploads/2013/09/shop_photo1.jpg?aac610"
-		width=450px height=450px>
+	<img id="imag"
+		src="http://gamergrub.com/v2/wp-content/gallery/gamer-grub-big-bang-theory/gamer-grub-3_0.jpg"
+		width=800px height=400px>
 
 	<c:set var="compare" value="${ sessionScope.rol}">
 	</c:set>

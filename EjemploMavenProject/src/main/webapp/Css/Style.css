@@ -8,6 +8,26 @@
     text-shadow: 0px 2px 3px #666;
 }
 
+.tituloinicial:hover{
+	text-align: center;
+    margin: auto;
+    font-family: "League-Gothic", Courier;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: orange;
+    text-shadow: 0px 2px 3px #666;
+}
+
+#imag{
+	opacity: 0.4;
+    filter: alpha(opacity=40); 
+}
+
+#imag:hover{
+	
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
 
 table, td, th {
 	border: inset 5px #000000;
@@ -160,11 +180,25 @@ header {
 nav {
 	background: #F9690E;
 	margin-top: 20px;
+	margin-left: 50px;
 	position: relative;
 	border: none 5px #000000;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
+	width:900px;
+	opacity: 0.8;
+    filter: alpha(opacity=40);
+}
+
+nav:hover{
+	color:white;
+	opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+
+nav>ul>li:hover{
+	color:white;
 }
 
 nav ul {
@@ -177,6 +211,8 @@ nav ul {
 	border-radius: 5px;
 	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial,
 		sans-serif;
+	opacity: 0.8;
+    filter: alpha(opacity=40);
 	
 }
 
@@ -196,7 +232,7 @@ nav ul li a {
 	text-decoration: none;
 	color: #fff;
 	display: block;
-	color: rgba(43, 44, 44, 0.9);
+	color: black;
 }
 
 nav ul li a:hover {
@@ -214,6 +250,7 @@ nav ul li div {
 	background: #ffffff;
 	box-sizing: border-box;
 	display: none;
+	color:black;
 }
 
 nav ul li div ul {
